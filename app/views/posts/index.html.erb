@@ -1,0 +1,15 @@
+<%= render 'shared/header' %>
+<%= render 'shared/navbar' %>
+<%= render 'shared/footer' %>
+
+<% @posts.each do |post| %>
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12">
+        <h1><%= post.title %></h1>
+        <p> <%= post.body %> </p>
+        </div>
+    </div>
+    
+    </div>
+<% end %>
