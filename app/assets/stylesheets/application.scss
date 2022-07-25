@@ -12,4 +12,6 @@
  *
  *= require_tree .
  *= require_self
- */
+ USE IMPORT INSTEAD OF REQUIRE
+ */ 
+ @import "bootstrap", "main"
