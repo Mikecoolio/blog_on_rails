@@ -5,11 +5,8 @@
 <% @posts.each do |post| %>
     <div class="container">
     <div class="row">
-    <div class="col-md-12">
-        <h1><%= post.title %></h1>
+        <h1><%= post.title %></h1> <span><%= link_to "Edit", post_path(post.id), method: :get %></span>
         <p> <%= post.body %> </p>
-        </div>
     </div>
-    
     </div>
 <% end %>
