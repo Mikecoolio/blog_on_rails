@@ -1,0 +1,25 @@
+<%= render 'shared/header' %>
+<%= render 'shared/navbar' %>
+
+<%= form_with(model: @post) do |f| %>  
+<% if @post.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body, class: 'form-control' %>
+
+  <%= f.submit %>
+<% end %>
+  <%= link_to "Show this post", @post %> |
+  <%= link_to "Back to posts", posts_path %>
+<%= render 'shared/footer' %>
+

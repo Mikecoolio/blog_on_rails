@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-    before_action :find_post_id, only: [:show, :update, :edit]
+    before_action :find_post_id, only: [:edit, :update, :show, :destroy]
+    # skip_before_action :verify_authenticity_token
 
     def new
         @post = Post.new
@@ -17,12 +18,6 @@ class PostsController < ApplicationController
     end
 
     def show
-        # if @post.present? 
-        #     redirect_to(posts_path, :notice =>  'Post was successfully created.')
-        # else
-        #     render :show
-        # end
-        @post = Post.find(params.require(:id))
     end
 
     def index
@@ -30,13 +25,23 @@ class PostsController < ApplicationController
     end
 
     def update
+        # # @post = Post.find(params[:id])
+        # p "PARAMS.INSPECT", params.inspect
+        # # @post.update({title: params[:title], body: params[:body]})
+        # # p @post
         if @post.update(post_params)
-            redirect_to posts_path, :notice => 'Post was successfully updated.'
+            redirect_to post_path(@post)
+        else
+            flash[:error] = "Error! Post was not updated"
+            render :update  
         end
     end
 
     def destroy
-        
+        if @post.present?
+            @post.destroy
+        end
+        redirect_to posts_path
     end
 
     def edit
