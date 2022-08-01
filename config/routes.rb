@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'root', to: 'posts#index'
 
   resources :posts
+  resources :comments, only: [:create, :destroy]
 end
