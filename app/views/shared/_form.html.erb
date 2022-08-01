@@ -1,12 +1,19 @@
 <%= form_for(@post) do |form| %>
+<% if @post.errors.any? %>
     <div>
-        <%= form.label :title %>
-        <%= form.text_field :title %>
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
     </div>
-    <div>
-        <%= form.label :body %>
-        <%= form.text_area :body%>
+  <% end %>
+  <%= form.label :title %>
+  <%= form.text_field :title, class: 'form-control' %>
 
-        <%= form.submit %>
+  <%= form.label :body %>
+  <%= form.text_area :body, class: 'form-control' %>
+
+  <%= form.submit %>
     </div>
 <% end %>
