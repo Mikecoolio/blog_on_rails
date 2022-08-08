@@ -21,15 +21,13 @@
 <div>
     <%= form_with(model: [@post, @comment]) do |f| %>  
         <%= f.text_area :body, :cols => 40, :rows => 10, placeholder: "What's on your mind?" %>
-    <%#= button_to "Comment", post_comments_path(@post.id), method: :post %>
-    <%#= link_to "Comment", post_comments_path(@comment), method: :post%>
         <%= f.submit "Submit" %>
     <% end %>
 <div>
 
     <% @post.comments.each do |comment| %>
-        <br>
         <%= comment.body %> 
+        <%= button_to "Destroy this comment", comment_path(comment), method: :delete %>
         <br>
     <% end %>
 </div>

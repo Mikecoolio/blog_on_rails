@@ -9,17 +9,17 @@
 Post.destroy_all
 Comment.destroy_all
 
-100.times do
+10.times do
     created_at = Faker::Date.backward(days:365 * 5)
  
     p = Post.create( 
-        title: Faker::Lorem.word,
         body: Faker::Lorem.paragraph,
+        title: Faker::Name.name,
         created_at: created_at,
         updated_at: created_at
     )
     if (p.valid?) 
-        rand(1..10).times do
+        rand(1..5).times do
             Comment.create(
                 body: Faker::Lorem.paragraph,
                 created_at: created_at,
