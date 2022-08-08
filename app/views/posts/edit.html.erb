@@ -5,7 +5,7 @@
 <% if @post.errors.any? %>
     <div style="color: red">
       <ul>
-        <% post.errors.each do |error| %>
+        <% @post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

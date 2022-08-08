@@ -2,13 +2,13 @@
 <%= render 'shared/navbar' %>
 <%= render 'shared/footer' %>
 
-<div class="container">
-<% @posts.each do |post| %>
-    <div class="container">
-    <div class="row">
-        <h1><%= link_to post.title, post_path(post.id)%> </h1>
-        <p> <%= post.body %> </p>
-    </div>
-    </div>
-<% end %>
+<div class="index-container">
+    
+    <% @posts.each do |post| %>
+        <div class=post>
+        <%# <div class="row"> %>
+            <h1><%= link_to post.title, post_path(post.id)%> </h1>
+            <p> <%= post.body %> </p>
+        </div>
+    <% end %>
 </div>
