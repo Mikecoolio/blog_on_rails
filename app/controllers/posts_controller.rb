@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    #before_action :find_post_id, only: [:edit, :update, :show, :destroy]
+    before_action :find_post_id, only: [:edit, :update, :show, :destroy]
     # skip_before_action :verify_authenticity_token
 
     def new
@@ -21,7 +21,6 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         @comment = Comment.new
         @comments = @post.comments.order(created_at: :desc)
-        # @comment = Comment.find(params[:id])
     end
 
     def index
@@ -29,10 +28,6 @@ class PostsController < ApplicationController
     end
 
     def update
-        # # @post = Post.find(params[:id])
-        # p "PARAMS.INSPECT", params.inspect
-        # # @post.update({title: params[:title], body: params[:body]})
-        # # p @post
         if @post.update(post_params)
             redirect_to post_path(@post)
         else

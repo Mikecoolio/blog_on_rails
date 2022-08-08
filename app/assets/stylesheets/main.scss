@@ -1,14 +1,15 @@
 #navbar-flex {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-	align-items: flex-start;
-	align-content: stretch;
+	// display: flex;
+	// flex-direction: row;
+	// flex-wrap: nowrap;
+	// justify-content: space-between;
+	// align-items: flex-start;
+	// align-content: stretch;
+    display: block;
 }
 
 
 .navbar {
-    align-self: flex-start;
+    // align-self: flex-start;
 }
   
