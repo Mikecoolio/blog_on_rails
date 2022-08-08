@@ -14,7 +14,7 @@ Comment.destroy_all
  
     p = Post.create( 
         body: Faker::Lorem.paragraph,
-        title: Faker::Name.name,
+        title: Faker::Movie.quote,
         created_at: created_at,
         updated_at: created_at
     )

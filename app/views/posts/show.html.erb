@@ -27,6 +27,7 @@
 
     <% @post.comments.each do |comment| %>
         <%= comment.body %> 
+        <%= time_ago_in_words(comment.created_at) %>
         <%= button_to "Destroy this comment", comment_path(comment), method: :delete %>
         <br>
     <% end %>
