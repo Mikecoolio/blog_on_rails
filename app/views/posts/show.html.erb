@@ -1,0 +1,35 @@
+<%= render 'shared/header' %>
+<%= render 'shared/navbar' %>
+
+<div class="container">
+    <div class="row">
+        <h1><%= @post.title %></h1> 
+        <p> <%= @post.body %> </p>
+    </div>
+    <div class="row">
+    <p> Posted <%= time_ago_in_words(@post.created_at) %> ago </p>
+    <%= form_for(@post) do |f| %>
+<div>
+  <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <%= link_to "Back to posts", posts_path %>
+
+  <%= button_to "Destroy this post", @post, method: :delete %>
+</div>
+    <% end %>
+</div>
+
+<div>
+    <%= form_with(model: [@post, @comment]) do |f| %>  
+        <%= f.text_area :body, :cols => 40, :rows => 10, placeholder: "What's on your mind?" %>
+        <%= f.submit "Submit" %>
+    <% end %>
+<div>
+
+    <% @post.comments.each do |comment| %>
+        <%= comment.body %> 
+        <%= time_ago_in_words(comment.created_at) %>
+        <%= button_to "Destroy this comment", comment_path(comment), method: :delete %>
+        <br>
+    <% end %>
+</div>
+<%= render 'shared/footer' %>

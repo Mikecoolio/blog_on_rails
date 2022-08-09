@@ -1,0 +1,32 @@
+<%= render 'shared/header' %>
+<%= render 'shared/navbar' %>
+<div id=edit-page>
+  <%= form_with(model: @post) do |f| %>  
+
+  <% if @post.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% @post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="edit-page">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="edit-page">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+
+  <div class="edit-page">
+    <%= f.submit %>
+  <% end %>
+  </div>
+</div>
+<%= render 'shared/footer' %>
+

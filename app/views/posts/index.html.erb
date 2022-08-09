@@ -1,0 +1,13 @@
+<%= render 'shared/header' %>
+<%= render 'shared/navbar' %>
+<%= render 'shared/footer' %>
+
+<div class="index-container">
+    
+    <% @posts.each do |post| %>
+        <div class=post>
+            <h1><%= link_to post.title, post_path(post.id)%> </h1>
+            <p> <%= post.body %> </p>
+        </div>
+    <% end %>
+</div>
