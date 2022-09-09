@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :find_post_id, only: [:edit, :update, :show, :destroy]
+    before_action :authenticate_user!, only: [:edit, :update, :create, :destroy, :new]
     # skip_before_action :verify_authenticity_token
 
     def new

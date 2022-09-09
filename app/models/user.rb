@@ -1,7 +1,6 @@
 class User < ApplicationRecord
-    attr_accessor :password, :password_confirmation
-    validates :password, presence: true, confirmation: true
-    
+    has_secure_password
+
     has_many :comments, dependent: :nullify
     has_many :posts, dependent: :nullify
 
