@@ -8,8 +8,9 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
+        @post.user = current_user
 
-        if @post.save
+        if @post.save!
             redirect_to post_path(@post), method: :post, notice: 'Post was successfully created.'
         else
             flash[:error] = "Invalid post"
@@ -25,6 +26,10 @@ class PostsController < ApplicationController
 
     def index
         @posts = Post.order(id: :desc)
+        @users = User.order(id: :desc)
+
+        puts current_user
+        puts params
     end
 
     def update

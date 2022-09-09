@@ -2,12 +2,18 @@
     <p>Sign Up Page</p>
     <%= form_for @user do |f| %>
     <div>
-        <%= f.label :name %>
+        <%= f.label :first_name %>
         <br>
-        <%= f.text_field :name %>
+        <%= f.text_field :first_name %>
+    </div>
+    <div>
+        <%= f.label :last_name %>
+        <br>
+        <%= f.text_field :last_name %>
     </div>
     <div>
         <%= f.label :email%>
+        <br>
         <%= f.text_field :email %>
     </div>
     <div>

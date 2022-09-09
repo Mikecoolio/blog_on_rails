@@ -5,12 +5,15 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new params.require(:user).permit(
-            :name,
+            :first_name,
+            :last_name,
             :email,
-            :password
+            :password,
+            :password_confirmation
         )
 
         if @user.save
+            flash.notice = 'User has been successfully created'
             redirect_to root_path
         else
             render :new, status: 303
