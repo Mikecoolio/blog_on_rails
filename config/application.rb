@@ -18,10 +18,12 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module BlogOnRails
+module AwesomeAnswers
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+    config.active_job.que_adapter = :delayed_job
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -33,5 +35,14 @@ module BlogOnRails
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      # Do not create helper files when using "rails g"
+      # instead of saying --no-helper
+      g.helper = false
+      # Do not create js and css files when using "rails g"
+      # instead of --no-assets
+      g.assets = false
+    end
   end
 end
