@@ -17,11 +17,11 @@ class UsersController < ApplicationController
         end
     end
 
-    def index   
-    end
+    # def index   
+    # end
 
-    def show
-    end
+    # def show
+    # end
 
     def edit
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end
 
     def edit_password
-        
+
     end
 
     private
