@@ -10,6 +10,15 @@ Post.destroy_all
 Comment.destroy_all
 User.destroy_all
 
+PASSWORD = "123"
+admin_user = User.create(
+    first_name: "admin",
+    last_name: "user",
+    email: "admin@user.com",
+    password: PASSWORD,
+    is_admin: true
+)
+
 rand(5..10).times do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
@@ -17,7 +26,7 @@ rand(5..10).times do
         first_name: first_name,
         last_name: last_name,
         email: "#{first_name}.#{last_name}@gmail.com",
-        password: "123"
+        password: PASSWORD
     )
 end
 users = User.all
