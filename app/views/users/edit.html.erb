@@ -1,0 +1,28 @@
+<div id="form">
+  <%= form_for(@user) do |form| %>
+  <% if @user.errors.any? %>
+      <div>
+        <ul>
+          <% @user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: 'form-control' %>
+
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+
+    <%= form.label :email %>
+    <%= form.text_field :email, class: 'form-control' %>
+
+    <%= form.label :password %>
+    <%= form.text_area :password, class: 'form-control' %>
+
+    <%= form.submit %>
+      </div>
+  <% end %>
+</div>
