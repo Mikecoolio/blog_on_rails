@@ -1,20 +1,22 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
+    before_action :find_post
             
     def create
         @comment = Comment.new(params.require(:comment).permit(:body))
-        @comment.post = Post.find(params[:post_id])
+        @comment.post = @post
+        @comment.user = current_user
 
         if @comment.save
+            puts "succesffully created comment"
             redirect_to post_path(@comment.post), notice: 'Comment was successfully created.'
         else
-            render 'posts/show', status: 303
+            puts "not succesffully created comment"
+            render 'posts/show'
         end
     end
 
     def destroy
-        p @comment
-        p params, "IN DESTROY"
         @comment = Comment.find params[:id] 
 
         if @comment.present?
@@ -23,6 +25,12 @@ class CommentsController < ApplicationController
         else
             redirect_to root_path, status: 303
         end
+    end
+
+    private
+
+    def find_post
+        @post = Post.find(params[:post_id])
     end
 end
     

@@ -15,14 +15,14 @@ class UsersController < ApplicationController
 
         if @user.save
             session[:user_id] = @user.id
-            flash.notice = 'User has been successfully created'
+            flash[:alert] = 'User has been successfully created'
             redirect_to root_path
         else
             render :new, status: 303
         end
     end
 
-    def index
+    def index   
 
     end
 

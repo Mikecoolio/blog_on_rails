@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    before_action :find_post_id, only: [:edit, :update, :show, :destroy]
-    before_action :authenticate_user!, only: [:edit, :update, :create, :destroy, :new]
+    before_action :find_post_id, only: [:edit, :update, :destroy, :show]
+    before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
     # skip_before_action :verify_authenticity_token
 
     def new
@@ -20,17 +20,14 @@ class PostsController < ApplicationController
     end
 
     def show
-        @post = Post.find(params[:id])
+        # @post = Post.find_by_id(params[:id])
         @comment = Comment.new
         @comments = @post.comments.order(created_at: :desc)
     end
 
     def index
         @posts = Post.order(id: :desc)
-        @users = User.order(id: :desc)
-
-        puts current_user
-        puts params
+        # @users = User.order(id: :desc)s
     end
 
     def update
