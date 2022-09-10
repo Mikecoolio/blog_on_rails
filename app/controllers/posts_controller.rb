@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :find_post_id, only: [:edit, :update, :destroy, :show]
-    before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+    # before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+    before_action :authorize_user!, only:[:edit, :update, :destroy]
     # skip_before_action :verify_authenticity_token
 
     def new
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
             redirect_to post_path(@post)
         else
             flash[:error] = "Error! Post was not updated"
-            render :update  
+            render :edit  
         end
     end
 
@@ -50,6 +51,10 @@ class PostsController < ApplicationController
     end
 
     private
+
+    def authorize_user!
+        redirect_to root_path, alert: "Not authorized" unless can?(:crud, @post)
+    end
 
     def find_post_id
         @post = Post.find(params[:id])

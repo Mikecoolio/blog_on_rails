@@ -1,5 +1,4 @@
 <%= render 'shared/header' %>
-<%= render 'shared/navbar' %>
 
 <div class="container">
     <div class="row">
@@ -8,20 +7,23 @@
     </div>
     <div class="row">
     <p> Posted <%= time_ago_in_words(@post.created_at) %> ago </p>
-    <%= form_for(@post) do |f| %>
+    <%#= form_for(@post) do |f| %>
 <div>
+<%#= if can?(:crud, @post %>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
   <%= button_to "Destroy this post", @post, method: :delete %>
+<%# end %>
+
+<%= link_to "Back to posts", posts_path %>
 </div>
-    <% end %>
+    <%# end %>
 </div>
 
 <div>
+
     <%= form_with(model: [@post, @comment]) do |f| %>  
         <%= f.text_area :body, :cols => 40, :rows => 10, placeholder: "What's on your mind?" %>
-        <%= f.submit "Submit" %>
+        <%= f.submit %>
     <% end %>
 <div>
 

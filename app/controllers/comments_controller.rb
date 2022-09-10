@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
-    # before_action :find_post
             
     def create
+        @post = Post.find(params[:post_id])
         @comment = Comment.new(params.require(:comment).permit(:body))
         @comment.post = @post
         @comment.user = current_user
 
+ 
         if @comment.save
             puts "succesffully created comment"
             redirect_to post_path(@comment.post), notice: 'Comment was successfully created.'
@@ -19,18 +20,14 @@ class CommentsController < ApplicationController
     def destroy
         @comment = Comment.find params[:id] 
 
-        if @comment.present?
+        if can?(:crud, @comment)
             @comment.destroy
-            redirect_to post_path(@comment.post_id), notice: 'Comment was successfully destroyed.'
+            redirect_to post_path(@comment.post_id), notice: 'Comment was successfully destroyed.'        
         else
             redirect_to root_path, status: 303
         end
-    end
+    
 
-    private
-
-    def find_post
-        @post = Post.find(params[:post_id])
     end
 end
     
