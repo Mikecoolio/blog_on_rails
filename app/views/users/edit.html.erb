@@ -19,10 +19,12 @@
     <%= form.label :email %>
     <%= form.text_field :email, class: 'form-control' %>
 
-    <%= form.label :password %>
-    <%= form.text_area :password, class: 'form-control' %>
+    <%#= form.label :password %>
+    <%#= form.text_area :password, class: 'form-control' %>
 
     <%= form.submit %>
       </div>
   <% end %>
 </div>
+
+<%= button_to "Edit Password", edit_user_password_edit_path(@user), method: :get %>

@@ -32,6 +32,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit_password
+        
+    end
+
     private
 
     def find_user
