@@ -17,11 +17,22 @@ class UsersController < ApplicationController
         end
     end
 
-    # def index   
-    # end
+    def password_edit
+    end
 
-    # def show
-    # end
+    def password_update
+        if @user && @user.authenticate(params[:current_password])
+            if @user.update(params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation))
+                puts "Password updated successfully"
+                flash[:notice] = 'Password changed successfully'
+                redirect_to root_path
+            else
+                puts "Password not updated"
+                flash[:error] = 'Password not changed'
+                redirect_to edit_password_path
+            end
+        end
+    end
 
     def edit
     end
