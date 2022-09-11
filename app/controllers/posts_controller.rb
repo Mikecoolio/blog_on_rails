@@ -22,14 +22,12 @@ class PostsController < ApplicationController
     end
 
     def show
-        # @post = Post.find_by_id(params[:id])
         @comment = Comment.new
         @comments = @post.comments.order(created_at: :desc)
     end
 
     def index
         @posts = Post.order(id: :desc)
-        # @users = User.order(id: :desc)s
     end
 
     def update
