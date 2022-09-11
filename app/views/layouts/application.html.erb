@@ -16,16 +16,20 @@
   <nav id="left-side">
     <a class="navbar-brand-logo" href="<%= posts_path %>">Blog On Rails</a>
   </nav>
+    <nav class = center-right>
+    </nav>
+
+    <% if user_signed_in? %>
     <nav class= "right-side">
       <a class="nav-link-home" href="/">Home </a>
-    <% if user_signed_in? %>
-    Hi,  <%= link_to current_user.full_name(current_user.first_name, current_user.last_name), edit_user_path(current_user.id) %>
+    Hi, <%= link_to current_user.full_name(current_user.first_name, current_user.last_name), edit_user_path(current_user.id) %>
       <a class="nav-link-create" href="/posts/new", method: :create>New Post</a>
-      <%#= link_to 'destroy', session_path, :method => :delete %>
-      <%#= link_to "Logout", session_path, method: :delete %>
       <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
+    </nav>
     <% else %>
-      <p> Not logged in </p>
+    <nav class= "right-side">
+    
+      <a class="nav-link-home" href="/">Home </a>
       <a class="nav-link-home"><%= button_to 'Login', new_session_path, method: :get %></a>
       <a class="nav-link-home" href="/users/new", method: :create>New User </a>
     <% end %>

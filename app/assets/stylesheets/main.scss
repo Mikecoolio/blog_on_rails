@@ -16,9 +16,10 @@
     font-size: 1.5em;
 }
 
-// #right-side {
-//     display: flex;
-// }
+.right-side {
+    display: flex;
+    flex-direction:row;
+}
 
 #left-side {
     width: 10%;
@@ -76,4 +77,12 @@ a {
 .edit-page {
     width: 100%;
     margin-bottom: 1em;
+}
+
+#login_form {
+    text-align: center;
+}
+
+#user-sign-up-page {
+    text-align: center;
 }

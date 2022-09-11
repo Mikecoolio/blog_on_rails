@@ -6,8 +6,7 @@
    </head>
 	
    <body>
-    <div>
-        <p>Sign Up Page</p>
+    <div id="user-sign-up-page">
         <%= form_for @user do |f| %>
         <div>
             <%= f.label :first_name %>
@@ -21,6 +20,7 @@
         </div>
         <div>
             <%= f.label :email%>
+            <br>
             <%= f.text_field :email %>
         </div>
         <div>
@@ -28,13 +28,12 @@
             <br>
             <%= f.text_field :password %>
         </div>
-            <br>
         <div>
             <%= f.label :password_confirmation %>
             <br>
             <%= f.password_field :password_confirmation %>
         </div>
-            <%= f.submit "Submit" %>
+            <%= f.submit "Sign Up" %>
         <% end %>
     </div>
    </body>
