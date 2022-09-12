@@ -8,8 +8,6 @@
     <% if user_signed_in? %>
       <%= link_to current_user.full_name(current_user.first_name, current_user.last_name), edit_user_path(current_user.id) %>
       <a class="nav-link-create" href="/posts/new", method: :create>New Post</a>
-      <%#= link_to 'destroy', session_path, :method => :delete %>
-      <%#= link_to "Logout", session_path, method: :delete %>
       <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
     <% else %>
       <a class="nav-link-home"><%= button_to 'Login', new_session_path, method: :get %></a>
