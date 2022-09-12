@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     before_action :authenticated_user!
     
     def create
@@ -28,7 +28,6 @@ class CommentsController < ApplicationController
             redirect_to root_path
         end
     
-
     end
 end
     

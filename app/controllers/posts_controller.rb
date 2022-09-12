@@ -2,8 +2,7 @@ class PostsController < ApplicationController
     before_action :find_post_id, only: [:edit, :update, :destroy, :show]
     before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
     before_action :authorize_user!, only:[:edit, :update, :destroy]
-    before_action :authenticated_user!, only: [:edit, :update, :create, :destroy]
-    # skip_before_action :verify_authenticity_token
+    # before_action :authenticated_user!, only: [:edit, :update, :create, :destroy]
 
     def new
         @post = Post.new
