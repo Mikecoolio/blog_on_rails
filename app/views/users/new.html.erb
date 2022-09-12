@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Text Input Control</title>
+   </head>
+	
+   <body>
+    <div id="user-sign-up-page">
+        <%= form_for @user do |f| %>
+        <div>
+            <%= f.label :first_name %>
+            <br>
+            <%= f.text_field :first_name %>
+        </div>
+        <div>
+            <%= f.label :last_name %>
+            <br>
+            <%= f.text_field :last_name %>
+        </div>
+        <div>
+            <%= f.label :email%>
+            <br>
+            <%= f.text_field :email %>
+        </div>
+        <div>
+            <%= f.label :password %>
+            <br>
+            <%= f.text_field :password %>
+        </div>
+        <div>
+            <%= f.label :password_confirmation %>
+            <br>
+            <%= f.password_field :password_confirmation %>
+        </div>
+            <%= f.submit "Sign Up" %>
+        <% end %>
+    </div>
+   </body>
+	
+</html>

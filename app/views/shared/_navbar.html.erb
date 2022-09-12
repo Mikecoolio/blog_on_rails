@@ -1,0 +1,17 @@
+<%= csrf_meta_tags %>
+<div id= "navbar-flex">
+  <nav id="left-side">
+    <a class="navbar-brand-logo" href="<%= posts_path %>">Blog On Rails</a>
+  </nav>
+    <nav class= "right-side">
+      <a class="nav-link-home" href="/">Home </a>
+    <% if user_signed_in? %>
+      <%= link_to current_user.full_name(current_user.first_name, current_user.last_name), edit_user_path(current_user.id) %>
+      <a class="nav-link-create" href="/posts/new", method: :create>New Post</a>
+      <%= button_to "Log Out", session_path(current_user.id), method: :delete %>
+    <% else %>
+      <a class="nav-link-home"><%= button_to 'Login', new_session_path, method: :get %></a>
+      <a class="nav-link-home" href="/users/new", method: :create>New User </a>
+    <% end %>
+    </nav>
+</div>

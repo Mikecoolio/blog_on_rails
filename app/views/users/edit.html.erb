@@ -1,0 +1,28 @@
+<div id="form">
+  <%= form_for(@user) do |form| %>
+  <% if @user.errors.any? %>
+      <div>
+        <ul>
+          <% @user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+
+    <%= form.submit %>
+      </div>
+  <% end %>
+</div>
+
+<br>
+<%= button_to "Edit Password", edit_password_path(@user), method: :get %>
